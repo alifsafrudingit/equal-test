@@ -231,7 +231,7 @@ class TransactionController extends Controller
     $afterData = Transaction::where('id', '>', $transaction['id'])->first();
 
     if ($transaction['type'] == 'pembelian') {
-      if ((isset($afterData['qty_balance']) - $transaction['qty']) < 0) {
+      if (($afterData['qty_balance'] - $transaction['qty']) < 0) {
         return response()->json([
           'status' => 'error',
           'message' => "Can't be deleted"
