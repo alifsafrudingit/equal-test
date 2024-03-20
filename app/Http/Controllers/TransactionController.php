@@ -70,10 +70,6 @@ class TransactionController extends Controller
 
     $lastData = Transaction::latest()->first();
 
-    // return response()->json([
-    //   'data' => $lastData
-    // ]);
-
     if ($lastData['qty_balance'] == 0 || $lastData['qty_balance'] < $data['qty']) {
       return response()->json([
         'status' => 'error',
@@ -232,12 +228,22 @@ class TransactionController extends Controller
       ], 404);
     }
 
-    // $transaction->delete();
+    $afterData = Transaction::where('id', '>', $transaction['id'])->first();
+
+    if ($transaction['type'] == 'pembelian') {
+      if ($afterData['qty_balance'] - $transaction['qty'] < 0) {
+        return response()->json([
+          'status' => 'error',
+          'message' => "Can't be deleted"
+        ]);
+      }
+    }
+
+    $transaction->delete();
 
     return response()->json([
       'status' => 'success',
-      'message' => 'course delete',
-      'data' => $transaction
+      'message' => 'transaction deleted',
     ]);
   }
 }
