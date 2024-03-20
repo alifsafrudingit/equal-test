@@ -57,8 +57,6 @@ class TransactionController extends Controller
 
     $data = $request->all();
 
-    // dd($data);
-
     $validator = Validator::make($data, $rules);
 
     if ($validator->fails()) {
