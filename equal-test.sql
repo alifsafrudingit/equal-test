@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Mar 2024 pada 08.49
+-- Waktu pembuatan: 20 Mar 2024 pada 09.57
 -- Versi server: 8.0.33
 -- Versi PHP: 8.2.0
 
@@ -120,8 +120,11 @@ CREATE TABLE `transactions` (
 
 INSERT INTO `transactions` (`id`, `type`, `date`, `qty`, `cost`, `price`, `total_cost`, `qty_balance`, `value_balance`, `hpp`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (3, 'pembelian', '2021-01-01', 40, 100, 100, 4000, 40, 4000, 100, NULL, '2024-03-19 20:18:48', '2024-03-19 20:18:48'),
-(7, 'penjualan', '2021-01-01', -20, 100, 200, -2000, 20, 2000, 100, NULL, '2024-03-19 21:28:34', '2024-03-20 00:11:48'),
-(9, 'penjualan', '2021-01-02', -10, 100, 200, -1000, 10, 1000, 100, NULL, '2024-03-20 00:33:36', '2024-03-20 00:33:36');
+(7, 'penjualan', '2021-01-01', -20, 100, 200, -2000, 20, 2000, 100, NULL, '2024-03-19 21:28:34', '2024-03-20 01:49:18'),
+(9, 'penjualan', '2021-01-02', -10, 100, 200, -1000, 10, 1000, 100, NULL, '2024-03-20 00:33:36', '2024-03-20 01:49:18'),
+(14, 'pembelian', '2021-01-03', 20, 120, 120, 2400, 30, 3400, 113, NULL, '2024-03-20 01:52:56', '2024-03-20 01:52:56'),
+(15, 'pembelian', '2021-01-03', 10, 110, 110, 1100, 40, 4500, 113, NULL, '2024-03-20 01:54:13', '2024-03-20 01:54:13'),
+(16, 'penjualan', '2021-01-04', -5, 113, 200, -565, 35, 3935, 112, NULL, '2024-03-20 01:55:04', '2024-03-20 01:55:04');
 
 -- --------------------------------------------------------
 
@@ -210,7 +213,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT untuk tabel `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
