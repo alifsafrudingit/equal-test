@@ -68,11 +68,13 @@ class TransactionController extends Controller
 
     $lastData = Transaction::latest()->first();
 
-    if ($lastData['qty_balance'] == 0 || $lastData['qty_balance'] < $data['qty']) {
-      return response()->json([
-        'status' => 'error',
-        'message' => 'Stock kosong'
-      ]);
+    if ($data['type'] == 'penjualan') {
+      if ($lastData['qty_balance'] == 0 || $lastData['qty_balance'] < $data['qty']) {
+        return response()->json([
+          'status' => 'error',
+          'message' => 'Stock kosong'
+        ]);
+      }
     }
 
     if ($data['type'] == 'pembelian') {
@@ -229,7 +231,7 @@ class TransactionController extends Controller
     $afterData = Transaction::where('id', '>', $transaction['id'])->first();
 
     if ($transaction['type'] == 'pembelian') {
-      if ($afterData['qty_balance'] - $transaction['qty'] < 0) {
+      if ((isset($afterData['qty_balance']) - $transaction['qty']) < 0) {
         return response()->json([
           'status' => 'error',
           'message' => "Can't be deleted"
